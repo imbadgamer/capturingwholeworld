@@ -1,0 +1,84 @@
+/* ==========================================================================
+   CAPTURING WHOLE WORLD — PRASHANT MISHRA
+   Editorial Statement Introduction
+   ========================================================================== */
+
+.intro-section {
+  padding: clamp(6rem, 14vw, 15rem) 0;
+  position: relative;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  max-width: 1540px;
+}
+
+.intro-meta-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.intro-meta-label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}
+
+.intro-massive-quote {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6.4vw, 7.8rem);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.intro-quote-line {
+  display: block;
+  overflow: hidden;
+}
+
+.intro-word-reveal {
+  display: inline-block;
+  transform: translateY(105%);
+  opacity: 0.1;
+  transition: transform 1.2s var(--ease-out-expo), opacity 1s ease;
+  will-change: transform, opacity;
+}
+.intro-word-reveal.revealed {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.intro-sub-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 680px;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .intro-sub-details {
+    padding-right: clamp(1rem, 4vw, 4rem);
+  }
+}
+
+.intro-narrative {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
+  line-height: 1.65;
+  color: var(--color-text-dim);
+  font-weight: 300;
+}
+.intro-narrative strong {
+  color: var(--color-text);
+  font-weight: 500;
+}

@@ -1,0 +1,203 @@
+/* ==========================================================================
+   CAPTURING WHOLE WORLD — PRASHANT MISHRA
+   Selected Stories (Featured Work Layout)
+   Jesper Landberg Editorial Work Architecture
+   ========================================================================== */
+
+.projects-section {
+  padding: clamp(5rem, 10vw, 12rem) 0;
+  position: relative;
+  background-color: var(--color-bg);
+}
+
+.projects-header-block {
+  margin-bottom: clamp(4rem, 8vw, 8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.projects-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  line-height: 0.95;
+}
+
+.projects-editorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6rem, 14vw, 15rem);
+}
+
+/* Individual Project Section */
+.project-showcase-row {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: clamp(2rem, 4vw, 4rem);
+}
+
+/* Alternating Horizontal Layout System */
+.project-grid-asymmetric {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .project-grid-asymmetric {
+    grid-template-columns: 1.25fr 0.85fr;
+  }
+  .project-showcase-row:nth-child(even) .project-grid-asymmetric {
+    grid-template-columns: 0.85fr 1.25fr;
+  }
+  .project-showcase-row:nth-child(even) .project-media-col {
+    order: 2;
+  }
+}
+
+/* Fullscreen Immersive Feature Layout for Project 01 & 06 */
+.project-showcase-row.full-cinematic-row .project-grid-asymmetric {
+  grid-template-columns: 1fr;
+}
+.project-showcase-row.full-cinematic-row .project-media-container {
+  aspect-ratio: 2.39 / 1;
+  width: 100%;
+}
+.project-showcase-row.full-cinematic-row .project-content-col {
+  max-width: 1000px;
+  margin-top: 2.5rem;
+}
+
+/* Project Visual Media Container */
+.project-media-container {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-card);
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--border-subtle);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 1.2s var(--ease-out-expo), filter 0.8s ease;
+  filter: brightness(0.9) contrast(1.05);
+}
+
+/* Subtle Hover Effects */
+.project-showcase-row:hover .project-media-image {
+  transform: scale(1.06);
+  filter: brightness(1) contrast(1.1);
+}
+
+/* Technical Camera Tag in Corner */
+.project-camera-tag {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background: rgba(9, 9, 11, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid rgba(212, 163, 115, 0.3);
+  z-index: 5;
+}
+
+/* Project Information Column */
+.project-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.project-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+.project-number {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.project-headline-wrap {
+  position: relative;
+}
+.project-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: transform 0.4s var(--ease-out-expo), color 0.3s ease;
+}
+.project-showcase-row:hover .project-headline {
+  transform: translateX(10px);
+  color: var(--color-accent-bright);
+}
+
+.project-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 1.8vw, 1.75rem);
+  line-height: 1.4;
+  color: var(--color-text-dim);
+  max-width: 600px;
+}
+
+.project-brief-desc {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  font-weight: 300;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+.project-showcase-row:hover .project-brief-desc {
+  opacity: 1;
+  color: var(--color-text-dim);
+}
+
+.project-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-accent);
+  width: fit-content;
+  transition: all var(--transition-fast);
+}
+.project-open-link:hover {
+  color: var(--color-accent);
+  transform: translateX(5px);
+}

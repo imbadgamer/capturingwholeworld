@@ -1,0 +1,151 @@
+/* ==========================================================================
+   CAPTURING WHOLE WORLD — PRASHANT MISHRA
+   "The World Is The Story" — Interactive Travel Film Section
+   ========================================================================== */
+
+.world-story-section {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(6rem, 12vw, 12rem) 0;
+  background-color: #070709;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Background Full-Screen Reactive Image Stage */
+.world-story-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0.38;
+  transition: opacity 0.8s ease;
+}
+.world-backdrop-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1.2s var(--ease-out-expo), transform 5s ease-out;
+  filter: contrast(1.15) brightness(0.7);
+}
+.world-backdrop-img.active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.world-story-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(circle at center, rgba(7, 7, 9, 0.4) 0%, rgba(7, 7, 9, 0.92) 85%);
+  pointer-events: none;
+}
+
+/* Foreground Interactive Content */
+.world-story-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.world-header-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 900px;
+}
+
+.world-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9vw, 10.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.world-sub-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  color: var(--color-text-dim);
+  line-height: 1.4;
+}
+
+/* Interactive Locations Grid */
+.world-locations-container {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 2rem;
+}
+
+.location-interactive-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 2.8vw, 2.8rem) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  transition: padding-left 0.4s var(--ease-out-expo), border-color 0.3s ease;
+  user-select: none;
+}
+.location-interactive-row:hover,
+.location-interactive-row.active {
+  padding-left: clamp(1rem, 2.5vw, 3rem);
+  border-color: var(--color-accent);
+}
+
+.location-name-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.location-index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+}
+.location-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.2vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  transition: color 0.3s ease;
+}
+.location-interactive-row:hover .location-name,
+.location-interactive-row.active .location-name {
+  color: var(--color-text);
+}
+
+.location-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.location-interactive-row:hover .location-status-badge,
+.location-interactive-row.active .location-status-badge {
+  color: var(--color-accent);
+}
+.location-pin-dot {
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}

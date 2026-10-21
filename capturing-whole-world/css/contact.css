@@ -1,0 +1,255 @@
+/* ==========================================================================
+   CAPTURING WHOLE WORLD — PRASHANT MISHRA
+   Contact (The Final Movie Scene) & Minimal Footer
+   ========================================================================== */
+
+.contact-movie-scene {
+  padding: clamp(6rem, 14vw, 15rem) 0 4rem;
+  position: relative;
+  background-color: #060608;
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.contact-scene-inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 8vw, 8rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Movie Finale Headline Block */
+.contact-finale-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.finale-scene-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.finale-scene-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.finale-massive-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8vw, 8.8rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.finale-sub-available {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2vw, 2.2rem);
+  color: var(--color-text-dim);
+}
+
+/* Interactive Contact Columns */
+.contact-grid-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+}
+@media (min-width: 900px) {
+  .contact-grid-split {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* Quick Inquiry Transmission Form */
+.contact-form-side {
+  background: rgba(17, 17, 20, 0.5);
+  border: 1px solid var(--border-subtle);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border-radius: 4px;
+}
+.contact-form-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+.contact-form-desc {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.inquiry-fields-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inquiry-input-field,
+.inquiry-select-field,
+.inquiry-textarea-field {
+  width: 100%;
+  background: rgba(9, 9, 11, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  padding: 0.9rem 1.1rem;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+.inquiry-input-field:focus,
+.inquiry-select-field:focus,
+.inquiry-textarea-field:focus {
+  border-color: var(--color-accent);
+  background: rgba(17, 17, 20, 0.95);
+  outline: none;
+}
+
+.inquiry-submit-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--color-text);
+  color: #09090b;
+  padding: 1.1rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+  margin-top: 0.5rem;
+}
+.inquiry-submit-action:hover {
+  background: var(--color-accent);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 163, 115, 0.25);
+}
+
+.inquiry-success-notice {
+  display: none;
+  background: rgba(212, 163, 115, 0.12);
+  border: 1px solid var(--color-accent);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Direct Channels Side */
+.contact-direct-channels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.direct-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.direct-channel-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1.25rem;
+}
+.direct-channel-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.direct-channel-val {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+.direct-channel-val:hover {
+  color: var(--color-accent);
+}
+
+/* Minimalist Footer */
+.minimal-site-footer {
+  border-top: 1px solid var(--border-subtle);
+  background-color: #050507;
+  padding: 3.5rem var(--site-padding) 3rem;
+}
+
+.footer-content-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-brand-statement {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.footer-brand-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+.footer-brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.footer-disciplines-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.footer-copyright {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}

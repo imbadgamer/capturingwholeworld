@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- SEO & Brand Metadata -->
+  <title>Capturing Whole World — Prashant Mishra | 3D Cinematic Portfolio</title>
+  <meta name="title" content="Capturing Whole World — Prashant Mishra | 3D Cinematic Portfolio">
+  <meta name="description" content="An immersive interactive 3D digital gallery and creative portfolio for photographer and cinematographer Prashant Mishra, Delhi–Gurugram, India.">
+  <meta name="keywords" content="Prashant Mishra, Capturing Whole World, 3D portfolio, cinematographer, photographer, visual storyteller, Delhi, Gurugram, India, travel films, automotive documentary">
+  <meta name="author" content="Prashant Mishra">
+  <meta name="theme-color" content="#050505">
+
+  <link rel="canonical" href="https://capturingwholeworld.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://capturingwholeworld.com/">
+  <meta property="og:title" content="Capturing Whole World — Prashant Mishra">
+  <meta property="og:description" content="Immersive 3D creative photography and cinematography portfolio.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85">
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Capturing Whole World — Prashant Mishra">
+  <meta property="twitter:description" content="Immersive 3D creative photography and cinematography portfolio.">
+  <meta property="twitter:image" content="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Fonts: Syne, Space Grotesk, Cormorant Garamond, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- 3D Environment & Curved Carousel Stylesheet -->
+  <link rel="stylesheet" href="css/style3d.css">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Person", "VisualArtist"],
+    "name": "Prashant Mishra",
+    "alternateName": "Capturing Whole World",
+    "jobTitle": "Photographer • Cinematographer • Visual Storyteller",
+    "url": "https://capturingwholeworld.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Delhi — Gurugram",
+      "addressCountry": "India"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Main Landing / Hero Background Video -->
+  <div class="hero-video-background-wrap" aria-hidden="true">
+    <video
+      id="heroBackgroundVideo"
+      class="hero-background-video"
+      src="assets/videos/hero-background.mp4"
+      autoplay
+      loop
+      muted
+      playsinline
+      webkit-playsinline
+      preload="auto">
+      <source src="assets/videos/hero-background.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
+
+  <!-- WebGL Perspective Grid Floor Background -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Procedural 35mm Analog Grain Canvas -->
+  <canvas id="grain-overlay"></canvas>
+
+  <!-- Desktop Custom Minimal Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring">
+    <span class="cursor-text-tag"></span>
+  </div>
+
+  <!-- =====================================================================
+       FIXED MINIMAL UI LAYER
+       ===================================================================== -->
+  <div class="fixed-ui-layer">
+    <!-- Top Row -->
+    <div class="ui-edge-row">
+      <!-- Top-Left: CAPTURING WHOLE WORLD (Official Brand Logo) -->
+      <a href="#" class="brand-mark" aria-label="Capturing Whole World — Photography &amp; Cinematography">
+        <img src="/assets/images/logo.png" alt="Capturing Whole World" class="brand-logo-img" onerror="if(this.getAttribute('src')!=='assets/images/logo.png') this.src='assets/images/logo.png';">
+        <div class="brand-text-stack">
+          <span class="brand-word-1">CAPTURING</span>
+          <span class="brand-word-2">WHOLE WORLD</span>
+        </div>
+      </a>
+
+      <!-- Top-Right: PROFILE -->
+      <button class="nav-profile-btn" id="openProfileBtn" data-cursor="link">
+        PROFILE
+      </button>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="ui-edge-row">
+      <!-- Bottom-Left: FEATURED / FULL Toggle -->
+      <div class="view-toggle-wrap">
+        <button class="toggle-choice active" id="toggleFeatured">FEATURED</button>
+        <span>/</span>
+        <button class="toggle-choice" id="toggleFull">FULL</button>
+      </div>
+
+      <!-- Bottom-Right: CONTACT -->
+      <button class="nav-contact-btn" id="openContactBtn" data-cursor="link">
+        CONTACT
+      </button>
+    </div>
+  </div>
+
+  <!-- Center Active Project Metadata HUD (Bottom Center) -->
+  <div class="active-project-meta-hud" id="activeProjectMetaHud">
+    <h2 class="hud-title-line" id="hudTitleLine">GYM</h2>
+    <div class="hud-subtitle-line" id="hudSubtitleLine">
+      GYM — <span>EXPEDITIONS</span> — 2026
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       3D CURVED PROJECT CAROUSEL STAGE
+       ===================================================================== -->
+  <main class="carousel-3d-viewport" id="carousel3DViewport" role="region" aria-label="3D Project Carousel">
+    <div class="carousel-3d-track" id="carousel3DTrack">
+      <!-- Injected and mathematically transformed in 3D arc by js/carousel3d.js -->
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       PROFILE EXPERIENCE OVERLAY (CHROMATIC GLASS SPHERE)
+       ===================================================================== -->
+  <div class="profile-overlay-modal" id="profileModal" role="dialog" aria-modal="true" aria-label="Creator Profile">
+    <div class="profile-top-row">
+      <span class="profile-header-title">PRASHANT MISHRA // PROFILE</span>
+      <button class="profile-close-btn" id="closeProfileBtn" data-cursor="link">
+        CLOSE
+      </button>
+    </div>
+
+    <div class="profile-center-stage">
+      <div class="profile-narrative-card">
+        <span class="profile-disciplines-sub">PHOTOGRAPHER • CINEMATOGRAPHER • VISUAL STORYTELLER</span>
+        <h1 class="profile-creator-name">PRASHANT MISHRA</h1>
+
+        <p class="profile-description-copy">
+          Based in Delhi–Gurugram, India.<br>
+          Working across travel, automobiles, weddings, fashion and commercial films.
+        </p>
+
+        <div class="profile-social-links-row">
+          <a href="https://instagram.com/capturingwholeworld" target="_blank" rel="noopener noreferrer" class="profile-channel-link" data-cursor="link">
+            INSTAGRAM ↗
+          </a>
+          <a href="mailto:prashant@capturingwholeworld.com" class="profile-channel-link" data-cursor="link">
+            EMAIL ↗
+          </a>
+          <a href="https://wa.me/919649232965" target="_blank" rel="noopener noreferrer" class="profile-channel-link" data-cursor="link">
+            WHATSAPP ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-muted);">
+      <span>CAPTURING WHOLE WORLD</span>
+      <span>DELHI — GURUGRAM — WORLDWIDE</span>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       CONTACT EXPERIENCE OVERLAY
+       ===================================================================== -->
+  <div class="contact-overlay-modal" id="contactModal" role="dialog" aria-modal="true" aria-label="Contact Inquiries">
+    <div class="profile-top-row">
+      <span class="profile-header-title">COMMISSIONS &amp; EXPEDITIONS</span>
+      <button class="profile-close-btn" id="closeContactBtn" data-cursor="link">
+        CLOSE
+      </button>
+    </div>
+
+    <div class="contact-content-center">
+      <!-- Left Column: Authentic On-Location Photographer Visual -->
+      <div class="contact-visual-column">
+        <div class="contact-photo-frame">
+          <img src="assets/images/contact-portrait.jpg" alt="Prashant Mishra on expedition with telephoto camera lens" class="contact-photo-img">
+          <div class="contact-photo-caption">
+            <span>EXPEDITION // 600MM TELEPHOTO FIELDWORK</span>
+            <span class="caption-reticle">● REC</span>
+          </div>
+        </div>
+        <div class="contact-photo-subtext">
+          <span>CINEMATOGRAPHER &amp; VISUAL STORYTELLER</span>
+          <span>DELHI — GURUGRAM — EXPEDITIONS</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Inquiry Details & Form -->
+      <div class="contact-form-column">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-accent);">
+            INITIATE TRANSMISSION
+          </span>
+          <h2 class="contact-headline">
+            LET'S CREATE SOMETHING WORTH REMEMBERING.
+          </h2>
+          <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; color: var(--color-dim); line-height: 1.5;">
+            Available for selected visual stories, travel documentaries, and commercial expeditions worldwide.
+          </p>
+        </div>
+
+        <form class="contact-form-stack" id="contactTransmissionForm">
+          <input type="text" class="contact-input-field" placeholder="YOUR NAME / STUDIO" required>
+          <input type="email" class="contact-input-field" placeholder="EMAIL ADDRESS" required>
+          <textarea class="contact-textarea-field" rows="3" placeholder="PROJECT DETAILS / LOCATION..." required></textarea>
+          <button type="submit" class="contact-submit-btn" data-cursor="link">
+            SEND INQUIRY →
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-muted);">
+      <span>DIRECT: HELLO@CAPTURINGWHOLEWORLD.COM</span>
+      <span>© 2026 PRASHANT MISHRA</span>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       PROJECT OPENING: FLOATING WHITE OVERLAY (94% VIEWPORT, ROUNDED CORNERS)
+       ===================================================================== -->
+  <div class="project-white-overlay" id="projectWhiteOverlay" role="dialog" aria-modal="true" aria-label="Project Full View">
+    <!-- Top-Right Black Circular Button with × -->
+    <button class="black-circular-close-btn" id="blackCloseBtn" aria-label="Close Project" data-cursor="link">
+      ×
+    </button>
+
+    <div class="white-project-container" id="projectEditorialContainer">
+      <!-- Populated dynamically on click by js/app3d.js from js/projects-data.js -->
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       DEDICATED GYM VIDEO EXPERIENCE OVERLAY (IMMERSIVE THEATRICAL CINEMA)
+       ===================================================================== -->
+  <div class="gym-video-overlay" id="gymVideoOverlay" role="dialog" aria-modal="true" aria-label="GYM Video Experience">
+    <button class="gym-video-close-btn" id="gymVideoCloseBtn" aria-label="Close GYM Video" data-cursor="link">
+      <span class="gym-close-label">CLOSE</span>
+      <span class="gym-close-icon">×</span>
+    </button>
+
+    <div class="gym-video-theater-container">
+      <div class="gym-video-header-strip">
+        <div class="gym-video-meta-left">
+          <span class="gym-tag">CATEGORY // COMMERCIAL &amp; ATHLETIC CINEMA</span>
+          <h2 class="gym-theater-title">GYM</h2>
+        </div>
+        <div class="gym-video-meta-right">
+          <span class="gym-badge">4K MASTER • SOUND AVAILABLE</span>
+        </div>
+      </div>
+
+      <div class="gym-player-aspect-frame">
+        <video id="gymPlayerVideo"
+               src="assets/videos/gym.mp4"
+               playsinline
+               webkit-playsinline
+               loop
+               preload="auto"
+               controls>
+        </video>
+        <button class="gym-audio-unmute-pill" id="gymAudioUnmutePill" aria-label="Unmute Video Audio">
+          <span class="unmute-icon">🔊</span>
+          <span class="unmute-text">TAP TO UNMUTE AUDIO</span>
+        </button>
+      </div>
+
+      <div class="gym-video-footer-strip">
+        <div class="gym-footer-credits">
+          <span>DIRECTOR: PRASHANT MISHRA</span>
+          <span class="divider">•</span>
+          <span>CAPTURING WHOLE WORLD STUDIOS</span>
+        </div>
+        <button class="gym-return-gallery-btn" id="gymReturnGalleryBtn" data-cursor="link">
+          ← RETURN TO 3D GALLERY
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN Dependencies: Three.js and GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Application Modules -->
+  <script src="js/projects-data.js"></script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/carousel3d.js"></script>
+  <script src="js/app3d.js"></script>
+
+</body>
+</html>

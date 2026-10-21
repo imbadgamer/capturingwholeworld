@@ -1,0 +1,189 @@
+/* ==========================================================================
+   CAPTURING WHOLE WORLD — PRASHANT MISHRA
+   About Section — Manifesto & Philosophy
+   ========================================================================== */
+
+.about-section {
+  padding: clamp(6rem, 12vw, 12rem) 0;
+  position: relative;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 7rem);
+}
+@media (min-width: 992px) {
+  .about-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+/* Left Column: Portrait & Film Roll Aesthetic */
+.about-visual-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-portrait-wrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-secondary);
+}
+
+.about-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: grayscale(85%) contrast(1.15) brightness(0.9);
+  transition: filter 0.8s var(--ease-cinematic), transform 0.8s var(--ease-cinematic);
+}
+.about-portrait-wrap:hover .about-portrait-img {
+  filter: grayscale(20%) contrast(1.1) brightness(0.95);
+  transform: scale(1.03);
+}
+
+.about-film-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+  z-index: 5;
+}
+.film-edge-left {
+  left: 6px;
+}
+.film-sprocket {
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+  background-color: rgba(7, 7, 7, 0.95);
+  border: 1px solid rgba(242, 238, 232, 0.2);
+}
+
+.about-caption-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+.about-caption-strip strong {
+  color: var(--text-primary);
+}
+
+/* Right Column: Narrative & Manifesto */
+.about-content-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-main-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 4.8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.about-lead-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 1.8vw, 1.85rem);
+  line-height: 1.45;
+  color: var(--accent-gold);
+  margin-bottom: 2rem;
+}
+
+.about-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Pillars / Philosophy Grid */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+@media (min-width: 600px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.philosophy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.philosophy-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+}
+.philosophy-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.philosophy-desc {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Director Stamp & Signature */
+.about-signature-wrap {
+  margin-top: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.signature-svg {
+  height: 48px;
+  width: auto;
+  stroke: var(--text-primary);
+}
+.director-stamp {
+  border: 1px solid var(--accent-gold);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}

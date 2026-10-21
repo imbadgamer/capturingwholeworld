@@ -1,0 +1,211 @@
+/* ==========================================================================
+   CAPTURING WHOLE WORLD — PRASHANT MISHRA
+   Minimal Fixed Navigation (Jesper Landberg Reference)
+   ========================================================================== */
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--site-padding);
+  background: transparent;
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav.scrolled {
+  background-color: rgba(9, 9, 11, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Left Brand Title */
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.nav-brand-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  display: inline-block;
+  animation: pulse-dot 2.5s infinite ease-in-out;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 8px var(--color-accent); }
+}
+
+/* Right Navigation Menu */
+.nav-menu-right {
+  display: none;
+}
+@media (min-width: 820px) {
+  .nav-menu-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3.2vw, 3rem);
+    list-style: none;
+  }
+}
+
+.nav-item-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color var(--transition-fast);
+}
+.nav-item-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s var(--ease-out-expo);
+}
+.nav-item-link:hover {
+  color: var(--color-text);
+}
+.nav-item-link:hover::after {
+  width: 100%;
+}
+
+/* Ambient Audio Toggle */
+.nav-audio-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(245, 242, 235, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--color-text-dim);
+  transition: all var(--transition-fast);
+}
+.nav-audio-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  background: rgba(212, 163, 115, 0.1);
+}
+.audio-waves {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 11px;
+}
+.audio-bar {
+  width: 2px;
+  height: 3px;
+  background-color: var(--color-text-muted);
+  border-radius: 1px;
+  transition: background-color 0.2s, height 0.2s;
+}
+.nav-audio-btn.playing .audio-bar {
+  background-color: var(--color-accent);
+  animation: audio-pulse 1.2s infinite ease-in-out alternate;
+}
+.nav-audio-btn.playing .audio-bar:nth-child(1) { animation-delay: 0.1s; height: 9px; }
+.nav-audio-btn.playing .audio-bar:nth-child(2) { animation-delay: 0.3s; height: 6px; }
+.nav-audio-btn.playing .audio-bar:nth-child(3) { animation-delay: 0.2s; height: 11px; }
+
+@keyframes audio-pulse {
+  0% { height: 2px; }
+  100% { height: 11px; }
+}
+
+/* Mobile Hamburger Button */
+.nav-burger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  padding: 2px;
+}
+@media (min-width: 820px) {
+  .nav-burger-btn {
+    display: none;
+  }
+}
+.burger-bar {
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-text);
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.nav-burger-btn.active .burger-bar:nth-child(1) {
+  transform: translateY(3.25px) rotate(45deg);
+}
+.nav-burger-btn.active .burger-bar:nth-child(2) {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* Fullscreen Minimal Mobile Drawer */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  z-index: 850;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--header-height) + 2rem) var(--site-padding) 3rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+.mobile-drawer.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-nav-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.mobile-link {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 8vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  display: block;
+}
+.mobile-drawer-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,144 @@
+/* ==========================================================================
+   CAPTURING WHOLE WORLD — PRASHANT MISHRA
+   Typography System — Modern Grotesk, Editorial Serif & Metadata
+   ========================================================================== */
+
+/* Monumental Display Headings */
+.title-display-hero {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.75rem, 9.2vw, 11rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.title-statement {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.5vw, 6.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.title-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.title-story {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* Elegant Editorial Serif */
+.serif-subheading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2vw, 2.25rem);
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+.serif-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.4vw, 2.75rem);
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+/* Technical Camera & Film Metadata */
+.meta-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.meta-tag.highlight {
+  color: var(--accent-gold);
+}
+
+.tech-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1.25rem 0;
+  margin: 1.5rem 0;
+}
+.tech-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.tech-spec-label {
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+.tech-spec-value {
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* Text Mask Reveal Utilities */
+.mask-wrap {
+  overflow: hidden;
+  display: block;
+}
+.mask-line {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 1s var(--ease-cinematic), opacity 0.8s ease;
+}
+.mask-line.revealed {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* Editorial Body Copy */
+.body-editorial {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 65ch;
+}
+.body-editorial p + p {
+  margin-top: 1.5rem;
+}
+
+.text-gold {
+  color: var(--accent-gold);
+}
+.text-dim {
+  color: var(--text-muted);
+}
